@@ -70,3 +70,11 @@ white-space: pre-wrap;
 word-break: break-all;
 word-wrap: break-word;
 }
+.newFont{
+    font-family: 'Permanent Marker', cursive;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 30px;
+    color: white;
+
+}

@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project by Aman Yadav</title>
+    <title>Speedo: A Coding Project by Aman Yadav</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,7 +14,9 @@
     <link href="/css/site.css" rel="stylesheet">
     <link href="css/prism.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/5db21ba9c6.js" crossorigin="anonymous"></script>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="img/favicon-32x32.png">
 </head>
 
@@ -22,7 +24,7 @@
 <!-- ==== Nav Section ==== -->
 <nav class="navbar navbar-expand-md navbar-light  fixed-top ">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">APP NAME</a>
+        <a class="navbar-brand newFont" href="#">Speedo</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -52,20 +54,66 @@
 <!-- ==== Main Section ==== -->
 <main class="flex-shrink-0">
     <div class="container py-4 px-4 mt-5">
-        <h2 class="border-1 border-bottom border-dark">The Coder For: App Name</h2>
+        <h2 class="border-1 border-bottom border-dark">The Coder For: Speedo</h2>
         <div class="row row-cols-1 row-cols-lg-2">
             <div class="col-lg-8">
                 <pre class="line-numbers"><code class="language-javascript">
-                    //Call Hello World with alert!
-function HelloWorld(){
-    alert("Hello World!");
+                    //get the values from UI
+function getValues(){
+    //get values from the page
+    let startValue = document.getElementById("startValue").value;
+    let endValue = document.getElementById("endValue").value;
+    startValue = parseInt(startValue);
+    endValue = parseInt(endValue);
+   
+    if(Number.isInteger(startValue)&& Number.isInteger(startValue)){
+        //calls createNumbers
+    let numbers= createNumbers(startValue,endValue);
+     //Calls the displayNumber Functions
+    displayNumbers(numbers);
+    }
+    else{
+        alert("You must enter integer!")
+    }
+    
+
+}
+//generate numbers from start value to the end value
+function createNumbers(sValue, eValue){
+    let numbers = [];
+    for(let i=sValue; i<=eValue;i++ ){
+       numbers.push(i);
+    }
+    return numbers;
+}
+//display the numbers and bold the even numbers
+function displayNumbers(numbers){
+    let templateRows = [];
+    for(let i=0; i<numbers.length;i++ ){
+       let number = numbers[i];
+       if(number%2==0){
+       templateRows += `<tr><td><b>${number}</b></td></tr>`;
+       }
+       else{
+        templateRows += `<tr><td>${number}</td></tr>`;
+       }
+    }
+    document.getElementById("results").innerHTML = templateRows;
 }
                 </code></pre>
             </div>
             <div class="col-lg-4">
-                <p> The Code is structure in one function.</p>
-                <h5>Hello World!</h5> 
-                <p> Hello world is function which displays an alert page page showing alert as hello world!</p>
+                <p> The Code is structure in three function.</p>
+                <h5>getValues</h5> 
+                <hr>
+                <p> The <b>getValues</b> function will get the value from the user input values from the page.</p>
+                <h5>createNumbers</h5> 
+                <hr>
+                <p> The <b>createNumbers</b> function will take the start and end values and will put it in array and will return the array.</p>
+               
+                <h5>displayValues</h5> 
+                <hr>
+                <p> The <b>displayValues</b> function will display the values in the tbody tag of the table where even numbers will be printed in bold.</p>
             </div>
         </div>
     </div>
